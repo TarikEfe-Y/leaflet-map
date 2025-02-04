@@ -1,23 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Harita</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <title>Leaflet Map Example</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <style>
-        #map { height: 100vh; }
+        #map {
+            height: 500px;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
+
     <div id="map"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
-        var map = L.map('map').setView([41.0082, 28.9784], 15); // İstanbul
+        // Harita Başlangıcı
+        const map = L.map('map').setView([39.925533, 32.866287], 13); // İstanbul örneği (39.925533, 32.866287)
+
+        // OpenStreetMap katmanını ekleyelim
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors'
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
-        L.marker([41.0082, 28.9784]).addTo(map).bindPopup("İstanbul").openPopup();
+
+        // Latitude ve Longitude ile Marker Ekleme
+        const marker = L.marker([39.925533, 32.866287]).addTo(map); // Örnek koordinatlar
+
+        // Marker’a Popup Ekleme
+        marker.bindPopup("<b>Burada marker var!</b>").openPopup();
     </script>
 </body>
 </html>
