@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>OpenStreetMap Kullanıcı Konumu</title>
+    <title>Harita</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
@@ -13,17 +13,11 @@
 <body>
     <div id="map"></div>
     <script>
-        var map = L.map('map').setView([41.0082, 28.9784], 15); // Başlangıç konumu
+        var map = L.map('map').setView([41.0082, 28.9784], 15); // İstanbul
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
-        
-        var marker = L.marker([41.0082, 28.9784]).addTo(map); // Varsayılan işaretçi
-
-        function updateLocation(lat, lon) {
-            map.setView([lat, lon], 15); // Haritayı yeni konuma kaydır
-            marker.setLatLng([lat, lon]); // İşaretçiyi yeni konuma taşı
-        }
+        L.marker([41.0082, 28.9784]).addTo(map).bindPopup("İstanbul").openPopup();
     </script>
 </body>
 </html>
